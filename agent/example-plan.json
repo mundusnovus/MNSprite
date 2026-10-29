@@ -1,0 +1,14 @@
+{
+  "name": "lantern",
+  "width": 16,
+  "height": 16,
+  "steps": [
+    { "tool": "set_palette", "input": { "colors": ["#00000000", "#3d1c1a", "#b87a14", "#f2b33d", "#ffd36b", "#1f0b0d", "#a8151b", "#f2492f", "#f6ebdd"] } },
+    { "tool": "draw_shape", "input": { "shape": "rect", "x0": 4, "y0": 5, "x1": 11, "y1": 13, "color": "#b87a14", "fill": true } },
+    { "tool": "draw_shape", "input": { "shape": "rect", "x0": 5, "y0": 6, "x1": 10, "y1": 12, "color": "#1f0b0d", "fill": true } },
+    { "tool": "draw_shape", "input": { "shape": "rect", "x0": 7, "y0": 8, "x1": 8, "y1": 11, "color": "#f2492f", "fill": true } },
+    { "tool": "draw_shape", "input": { "shape": "rect", "x0": 5, "y0": 3, "x1": 10, "y1": 4, "color": "#f2b33d", "fill": true } },
+    { "tool": "outline", "input": { "color": "#3d1c1a" } },
+    { "tool": "export", "input": { "format": "png", "path": "lantern.png", "scale": 8 } }
+  ]
+}
