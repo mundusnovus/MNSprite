@@ -1,4 +1,4 @@
-# ChristianSprite for developers
+# MNSprite for developers
 
 ## Layout
 
@@ -7,7 +7,7 @@ src/
   app/                 what ships; serve this folder
     index.html         the page; data-app="sprite" tells the host which app it is
     style.css          the app's layout and look
-    brand/             Christian Systems tokens, cs-app.css, cs-host.js, the Chancel font
+    brand/             Mundus Novus tokens, mn-app.css, mn-host.js, the Chancel font
     js/                the app (below)
     manifest.webmanifest, sw.js, icons
   icons/               the app icon at every size, .icns and .ico
@@ -32,7 +32,7 @@ Pure logic, which runs in Node for the tests and in the browser as `AS.*`:
 | `rpc.js` | Lets a desktop shell drive the app |
 
 The interface is in `ui-base.js`, `editor.js`, `panels.js` and `app.js`. Files and the assistant's key
-go through `window.csHost` (`brand/cs-host.js`).
+go through `window.csHost` (`brand/mn-host.js`).
 
 ## The assistant's tools
 

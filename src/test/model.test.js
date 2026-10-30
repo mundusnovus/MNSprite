@@ -105,7 +105,7 @@ test('native project JSON round trip (rgba and indexed)', () => {
     assert.strictEqual(back.tags[0].dir, 'pingpong'); assert.strictEqual(px(back, 2, 1, 0, 1), px(d, 2, 1, 0, 1)); assert.strictEqual(px(back, 0, 0, 1, 0), px(d, 0, 0, 1, 0));
     assert.deepStrictEqual(back.palette, d.palette);
   }
-  assert.throws(() => M.Doc.fromJSON({ format: 'other' }), /not a ChristianSprite/);
+  assert.throws(() => M.Doc.fromJSON({ format: 'other' }), /not a MNSprite/);
 });
 
 test('session: current frame/layer stay valid when the document shrinks', () => {

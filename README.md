@@ -1,11 +1,11 @@
-# ChristianSprite
+# MNSprite
 
 <img src="src/icons/sprite-256.png" alt="" width="96">
 
-A free pixel-art editor and animator from **Christian Systems**. Draw by hand, or tell the assistant what you
+A free pixel-art editor and animator from **Mundus Novus**. Draw by hand, or tell the assistant what you
 want and watch it build the sprite on the canvas, one undoable step at a time.
 
-Use it at **christiansystems.org/sprite**, install it from there as an app, or download it for macOS,
+Use it at **mundusnovus.org/sprite**, install it from there as an app, or download it for macOS,
 Windows or Linux.
 
 ## What it does
@@ -24,7 +24,7 @@ Windows or Linux.
   and sent only to Anthropic.
 - **New assistant tools.** `ramp_fill` (dithered gradients), `draw_text` (lettering in the Chancel pixel
   face) and `texture` (scanlines, checker, grain, noise).
-- **Easier to use.** Light and dark themes in Christian Systems colours, and a layout that works on phones
+- **Easier to use.** Light and dark themes in Mundus Novus colours, and a layout that works on phones
   and tablets.
 
 Files saved by Vigil Sprite (`.asprite.json`) still open.
@@ -44,9 +44,9 @@ python3 -m http.server -d src/app 8000
 
 Then open http://localhost:8000. Details for developers are in [docs/sprite.md](docs/sprite.md).
 
-ChristianSprite is original code. It is not Aseprite and is not affiliated with it.
+MNSprite is original code. It is not Aseprite and is not affiliated with it.
 
 ## License
 
-Free and open source under the **Christian Systems License 1.0** (GPL-3.0-only); see
+Free and open source under the **Mundus Novus License 1.0** (GPL-3.0-only); see
 [LICENSING.md](LICENSING.md).

@@ -1,4 +1,4 @@
-/* Christian Systems host: the small layer every Christian Systems app stands on, so the same app runs in a
+/* Mundus Novus host: the small layer every Mundus Novus app stands on, so the same app runs in a
    browser tab, as an installed web app, or inside our desktop shells for macOS, Windows and Linux.
 
    It provides window.csHost with:
@@ -12,11 +12,11 @@
      window               setTitle, setDirty (warns before closing unsaved work), close
 
    Nothing leaves the device except the assistant's own requests to api.anthropic.com, and only when a key is set.
-   Original code, Christian Systems License 1.0 (GPL-3.0-only). */
+   Original code, Mundus Novus License 1.0 (GPL-3.0-only). */
 (function () {
   'use strict';
   if (window.csHost) return;
-  var APP = (document.documentElement.dataset.app || 'app'), KEY = 'cs.anthropic.key', MODEL = 'cs.anthropic.model';
+  var APP = (document.documentElement.dataset.app || 'app'), KEY = 'mn.anthropic.key', MODEL = 'mn.anthropic.model';
   var dirty = false, project = null, native = window.csNative || null;
 
   // ---------------------------------------------------------------- small IndexedDB store for file handles
@@ -25,7 +25,7 @@
     if (dbp) return dbp;
     dbp = new Promise(function (res, rej) {
       if (!window.indexedDB) return rej(new Error('no IndexedDB'));
-      var r = indexedDB.open('cs-host', 1);
+      var r = indexedDB.open('mn-host', 1);
       r.onupgradeneeded = function () { r.result.createObjectStore('kv'); };
       r.onsuccess = function () { res(r.result); }; r.onerror = function () { rej(r.error); };
     });
@@ -129,7 +129,7 @@
     model: function () { return store.get(MODEL) || 'claude-sonnet-5-5'; },
     prompt: function () {
       return new Promise(function (resolve) {
-        var d = document.createElement('dialog'); d.className = 'cs-keys';
+        var d = document.createElement('dialog'); d.className = 'mn-keys';
         d.innerHTML = '<form method="dialog"><h2>Your Anthropic key</h2>' +
           '<p>The assistant runs on your own key. It is stored only on this device and sent only to api.anthropic.com.</p>' +
           '<label>Key <input name="k" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-..."></label>' +

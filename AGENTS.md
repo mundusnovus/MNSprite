@@ -1,8 +1,8 @@
-# ChristianSprite, for AI agents
+# MNSprite, for AI agents
 
-You are helping someone make pixel art with ChristianSprite, a free pixel-art editor and animator. You can draw
+You are helping someone make pixel art with MNSprite, a free pixel-art editor and animator. You can draw
 without a browser: `agent/sprite.mjs` runs the same tools the app's own assistant uses and saves a project the person
-can open and change in ChristianSprite, plus PNG, GIF or sprite-sheet exports.
+can open and change in MNSprite, plus PNG, GIF or sprite-sheet exports.
 
 ## What you need
 
@@ -20,7 +20,7 @@ Node.js 22 or later. Nothing to install: there are no packages.
    a small lantern.
 
    ```json
-   { "name": "knight", "width": 32, "height": 32, "steps": [ { "tool": "set_palette", "input": { "colors": ["#00000000", "#140708"] } } ] }
+   { "name": "knight", "width": 32, "height": 32, "steps": [ { "tool": "set_palette", "input": { "colors": ["#00000000", "#0c1222"] } } ] }
    ```
 
    To change an existing project, add `"open": "that.asprite.json"`.
@@ -38,7 +38,7 @@ Node.js 22 or later. Nothing to install: there are no packages.
 4. Export with an `export` step, for example `{ "tool": "export", "input": { "format": "sheet", "path": "knight/knight.png", "scale": 4 } }`.
    Files go into the output folder.
 
-5. Give the person the `.asprite.json` (they open it at https://sprite.christiansystems.org/app/ with Open, or in the
+5. Give the person the `.asprite.json` (they open it at https://sprite.mundusnovus.org/app/ with Open, or in the
    desktop app) and the exports.
 
 ## Drawing well
@@ -54,5 +54,5 @@ Node.js 22 or later. Nothing to install: there are no packages.
 
 - Work in your own folder (`out/` or the person's). Do not change `src/` unless the person asks you to.
 - Keep it kind: no cruel, sexual or hateful images.
-- ChristianSprite is free and open source under the Christian Systems License (GPL-3.0-only). What the person makes
+- MNSprite is free and open source under the Mundus Novus License (GPL-3.0-only). What the person makes
   is theirs.

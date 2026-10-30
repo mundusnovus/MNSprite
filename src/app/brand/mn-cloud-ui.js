@@ -1,9 +1,9 @@
-/* Christian Cloud for Christian Systems apps: one panel to connect, open, save and autosave, over cs-cloud.js.
-   An app calls csCloudUI.attach({ folder, ext, name(), serialize(), open(name, text) }) once, then
-   csCloudUI.show() from a button and csCloudUI.changed() whenever its work changes. GPL-3.0-only. */
+/* MNCloud for Mundus Novus apps: one panel to connect, open, save and autosave, over mn-cloud.js.
+   An app calls mnCloudUI.attach({ folder, ext, name(), serialize(), open(name, text) }) once, then
+   mnCloudUI.show() from a button and mnCloudUI.changed() whenever its work changes. GPL-3.0-only. */
 (function (global) {
   'use strict';
-  var C = global.csCloud, app = null, etags = {}, timer = null, AUTO = 'cs.cloud.autosave.';
+  var C = global.csCloud, app = null, etags = {}, timer = null, AUTO = 'mn.cloud.autosave.';
   function el(tag, attrs, kids) {
     var e = document.createElement(tag);
     Object.keys(attrs || {}).forEach(function (k) { if (k === 'text') e.textContent = attrs[k]; else if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2), attrs[k]); else e.setAttribute(k, attrs[k]); });
@@ -26,13 +26,13 @@
   }
   function show() {
     if (!app || !C) return;
-    var d = el('dialog', { class: 'cs-keys cs-cloud' }), body = el('form', { method: 'dialog' }), list = el('div', { class: 'cs-cloud-list' }), msg = el('p', { class: 'cs-cloud-msg', role: 'status' });
+    var d = el('dialog', { class: 'mn-keys mn-cloud' }), body = el('form', { method: 'dialog' }), list = el('div', { class: 'mn-cloud-list' }), msg = el('p', { class: 'mn-cloud-msg', role: 'status' });
     function say(t) { msg.textContent = t || ''; }
     async function draw() {
       body.textContent = '';
-      body.appendChild(el('h2', { text: 'Christian Cloud' }));
+      body.appendChild(el('h2', { text: 'MNCloud' }));
       if (!C.connected()) {
-        body.appendChild(el('p', { text: 'Keep your work in Christian Cloud, with 3 GB free on your Christian Systems account. This device keeps its own key; you can disconnect at any time.' }));
+        body.appendChild(el('p', { text: 'Keep your work in MNCloud, with 3 GB free on your Mundus Novus account. This device keeps its own key; you can disconnect at any time.' }));
         body.appendChild(el('menu', {}, [el('span'), el('button', { value: 'cancel', type: 'submit', text: 'Not now' }), el('button', { type: 'button', class: 'primary', text: 'Connect', onclick: async function () { try { say('Waiting for you to sign in…'); await C.connect(); say(''); draw(); } catch (e) { say(e.message); } } })]));
         body.appendChild(msg);
         return;
@@ -41,7 +41,7 @@
       box.addEventListener('change', function () { setAuto(box.checked); if (box.checked) changed(); });
       body.appendChild(el('p', { text: 'Your ' + app.folder.slice(1) + ' folder.' }));
       body.appendChild(list);
-      body.appendChild(el('label', { class: 'cs-cloud-auto' }, [box, ' Save to Cloud automatically while I work']));
+      body.appendChild(el('label', { class: 'mn-cloud-auto' }, [box, ' Save to Cloud automatically while I work']));
       body.appendChild(msg);
       body.appendChild(el('menu', {}, [
         el('button', { type: 'button', text: 'Disconnect', onclick: function () { C.disconnect(); etags = {}; draw(); } }), el('span'),
@@ -55,9 +55,9 @@
         await C.mkdir(app.folder);
         var files = (await C.list(app.folder)).filter(function (f) { return !f.directory && f.name.endsWith(app.ext); });
         list.textContent = '';
-        if (!files.length) list.appendChild(el('p', { class: 'cs-cloud-empty', text: 'Nothing here yet.' }));
+        if (!files.length) list.appendChild(el('p', { class: 'mn-cloud-empty', text: 'Nothing here yet.' }));
         files.forEach(function (f) {
-          list.appendChild(el('button', { type: 'button', class: 'cs-cloud-file', onclick: async function () {
+          list.appendChild(el('button', { type: 'button', class: 'mn-cloud-file', onclick: async function () {
             try { say('Opening…'); var r = await C.read(f.path); etags[f.path] = r.etag; app.open(f.name.slice(0, -app.ext.length), r.data); d.close(); } catch (e) { say(e.message); }
           } }, [el('b', { text: f.name }), el('small', { text: f.modified ? new Date(f.modified).toLocaleString() : '' })]));
         });

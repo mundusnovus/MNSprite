@@ -25,7 +25,7 @@ test('page globals: every module the page loads is registered', () => {
 test('page globals: the export tool writes a PNG', async () => {
   const AS = loadBrowserGlobals();
   const S = new AS.session.Session(new AS.model.Doc({ w: 4, h: 4, mode: 'rgba' }));
-  await AS.tools.run(S, 'draw_shape', { shape: 'rect', x0: 0, y0: 0, x1: 3, y1: 3, color: '#e3261c', fill: true });
+  await AS.tools.run(S, 'draw_shape', { shape: 'rect', x0: 0, y0: 0, x1: 3, y1: 3, color: '#2a62c9', fill: true });
   const files = {};
   const res = await AS.tools.run(S, 'export', { format: 'png', path: 'red.png', scale: 2 }, { write: (p, d) => { files[p] = d; return Promise.resolve({ path: p }); } });
   assert.strictEqual(res.ok, true);
