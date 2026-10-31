@@ -1,11 +1,11 @@
-# MNSprite
+# Asteria Sprite
 
 <img src="src/icons/sprite-256.png" alt="" width="96">
 
-A free pixel-art editor and animator from **Mundus Novus**. Draw by hand, or tell the assistant what you
+A free pixel-art editor and animator from **Asteria Technology**. Draw by hand, or tell the assistant what you
 want and watch it build the sprite on the canvas, one undoable step at a time.
 
-Use it at **mundusnovus.org/sprite**, install it from there as an app, or download it for macOS,
+Use it at **asteria.technology/sprite**, install it from there as an app, or download it for macOS,
 Windows or Linux.
 
 ## What it does
@@ -22,9 +22,9 @@ Windows or Linux.
 - **Runs anywhere.** In a browser tab, as an installed app that works offline, or in our desktop shells.
 - **Your key, your device.** The assistant uses your own Anthropic key. It is stored only on your device
   and sent only to Anthropic.
-- **New assistant tools.** `ramp_fill` (dithered gradients), `draw_text` (lettering in the Chancel pixel
+- **New assistant tools.** `ramp_fill` (dithered gradients), `draw_text` (lettering in the Asteria Pixel pixel
   face) and `texture` (scanlines, checker, grain, noise).
-- **Easier to use.** Light and dark themes in Mundus Novus colours, and a layout that works on phones
+- **Easier to use.** Light and dark themes in Asteria Technology colours, and a layout that works on phones
   and tablets.
 
 Files saved by Vigil Sprite (`.asprite.json`) still open.
@@ -44,9 +44,9 @@ python3 -m http.server -d src/app 8000
 
 Then open http://localhost:8000. Details for developers are in [docs/sprite.md](docs/sprite.md).
 
-MNSprite is original code. It is not Aseprite and is not affiliated with it.
+Asteria Sprite is original code. It is not Aseprite and is not affiliated with it.
 
 ## License
 
-Free and open source under the **Mundus Novus License 1.0** (GPL-3.0-only); see
+Free and open source under the **Asteria License 1.0** (GPL-3.0-only); see
 [LICENSING.md](LICENSING.md).

@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// MNSprite for agents: the same tools the in-app assistant uses, run from the command line with Node 22+.
+// Asteria Sprite for agents: the same tools the in-app assistant uses, run from the command line with Node 22+.
 //   node agent/sprite.mjs tools                      list every tool with its input schema (JSON)
 //   node agent/sprite.mjs run plan.json [out-dir]    run a plan and save the project, previews and exports
 //   node agent/sprite.mjs view project.asprite.json  print an ASCII picture and facts about a saved project

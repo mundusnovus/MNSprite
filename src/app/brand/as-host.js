@@ -1,4 +1,4 @@
-/* Mundus Novus host: the small layer every Mundus Novus app stands on, so the same app runs in a
+/* Asteria Technology host: the small layer every Asteria Technology app stands on, so the same app runs in a
    browser tab, as an installed web app, or inside our desktop shells for macOS, Windows and Linux.
 
    It provides window.csHost with:
@@ -12,11 +12,20 @@
      window               setTitle, setDirty (warns before closing unsaved work), close
 
    Nothing leaves the device except the assistant's own requests to api.anthropic.com, and only when a key is set.
-   Original code, Mundus Novus License 1.0 (GPL-3.0-only). */
+   Original code, Asteria License 1.0 (GPL-3.0-only). */
 (function () {
   'use strict';
   if (window.csHost) return;
-  var APP = (document.documentElement.dataset.app || 'app'), KEY = 'mn.anthropic.key', MODEL = 'mn.anthropic.model';
+  // Earlier names of this app family kept settings under other prefixes (Christian Systems cs., Mundus Novus mn.); move
+  // them across once, so a saved key, Cloud connection or keymap survives the rename.
+  (function () {
+    try {
+      var ls = window.localStorage, keys = [], rules = [[/^(cs|mn)\./, 'as.'], [/^(christian|mn)-sprite\./, 'asteria-sprite.'], [/^(christian|mn)-box\./, 'asteria-box.']];
+      for (var i = 0; i < ls.length; i++) keys.push(ls.key(i));
+      keys.forEach(function (k) { rules.forEach(function (r) { if (r[0].test(k)) { var n = k.replace(r[0], r[1]); if (ls.getItem(n) == null) ls.setItem(n, ls.getItem(k)); } }); });
+    } catch (e) { /* storage may be off */ }
+  })();
+  var APP = (document.documentElement.dataset.app || 'app'), KEY = 'as.anthropic.key', MODEL = 'as.anthropic.model';
   var dirty = false, project = null, native = window.csNative || null;
 
   // ---------------------------------------------------------------- small IndexedDB store for file handles
@@ -25,7 +34,7 @@
     if (dbp) return dbp;
     dbp = new Promise(function (res, rej) {
       if (!window.indexedDB) return rej(new Error('no IndexedDB'));
-      var r = indexedDB.open('mn-host', 1);
+      var r = indexedDB.open('as-host', 1);
       r.onupgradeneeded = function () { r.result.createObjectStore('kv'); };
       r.onsuccess = function () { res(r.result); }; r.onerror = function () { rej(r.error); };
     });
@@ -129,7 +138,7 @@
     model: function () { return store.get(MODEL) || 'claude-sonnet-5-5'; },
     prompt: function () {
       return new Promise(function (resolve) {
-        var d = document.createElement('dialog'); d.className = 'mn-keys';
+        var d = document.createElement('dialog'); d.className = 'as-keys';
         d.innerHTML = '<form method="dialog"><h2>Your Anthropic key</h2>' +
           '<p>The assistant runs on your own key. It is stored only on this device and sent only to api.anthropic.com.</p>' +
           '<label>Key <input name="k" type="password" autocomplete="off" spellcheck="false" placeholder="sk-ant-..."></label>' +
